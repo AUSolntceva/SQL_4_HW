@@ -16,14 +16,6 @@ JOIN albums a ON a.id = am.albums_id
 WHERE NOT DATE_PART('year', a.realease_years_album::DATE) = 1975
 GROUP BY m.pen_name;
 
-SELECT DISTINCT s3.title_songbook FROM songbooks s3 
-LEFT JOIN tracks_songbooks ts ON ts.tracks_id = ts.songbooks_id
-LEFT JOIN tracks t ON ts.tracks_id = ts.tracks_id 
-LEFT JOIN albums a ON t.id = t.albums_id 
-LEFT JOIN albums_musicians am ON t.albums_id = am.albums_id 
-LEFT JOIN musicians m2 ON am.musicians_id = am.musicians_id
-WHERE m2.pen_name LIKE 'Dolina Larisa';
-
 SELECT s.title_songbook FROM songbooks s
 JOIN tracks_songbooks ts ON s.id = ts.songbooks_id
 JOIN tracks t ON t.id = ts.tracks_id
